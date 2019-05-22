@@ -1,0 +1,26 @@
+page-tab-reviews,
+.tab-reviews {
+
+  ion-list {
+    margin-bottom: 0;
+
+    ion-item {
+      background: #FAFAFA;
+
+      .title {
+        .pull-left {
+          max-width: 70%;
+        }
+
+        .pull-right {
+          color: color($colors, dark);
+        }
+      }
+
+      .author {
+        color: color($colors, dark);
+        font-style: italic;
+      }
+    }
+  }
+}

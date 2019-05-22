@@ -1,0 +1,78 @@
+<!-- -->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>
+      <ion-icon name="car" item-start></ion-icon>
+      Search Cars
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding class="search-cars common-bg">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col col-12>
+        <!-- choose pickup and drop-off-->
+        <h6 ion-text no-margin color="primary" class="marginB-16px">
+          Pick-up / Drop-off
+        </h6>
+        <ion-card no-margin margin-bottom class="full-width">
+          <ion-item tappable (click)="choosePlace('from')" class="border-bottom">
+            <ion-icon name="pin" color="primary" item-left></ion-icon>
+            <span ion-text>{{ search.pickup }}</span>
+          </ion-item>
+          <ion-item tappable (click)="choosePlace('to')">
+            <ion-icon name="pin" color="primary" item-left></ion-icon>
+            <span ion-text>{{ search.dropOff }}</span>
+          </ion-item>
+        </ion-card>
+
+        <!--choose time-->
+        <ion-card no-margin margin-bottom class="full-width">
+          <ion-item class="border-bottom">
+            <ion-icon name="md-calendar" color="primary" item-left></ion-icon>
+            <ion-datetime class="no-pl" ion-text displayFormat="DD/MM/YYYY h:mm A" pickerFormat="DD/MM/YYYY h:mm A" [(ngModel)]="search.from"></ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="md-calendar" color="primary" item-left></ion-icon>
+            <ion-datetime class="no-pl" ion-text displayFormat="DD/MM/YYYY h:mm A" pickerFormat="DD/MM/YYYY h:mm A" [(ngModel)]="search.to"></ion-datetime>
+          </ion-item>
+        </ion-card>
+
+        <hr>
+
+        <h6 ion-text color="primary">
+          Make:
+        </h6>
+        <ion-card no-margin margin-bottom class="full-width">
+          <ion-item>
+            <ion-label ion-text color="primary">One or more:</ion-label>
+            <ion-select [(ngModel)]="toppings" multiple="true" cancelText="Cancel" okText="OK">
+              <ion-option value="audi" selected="true">Audi</ion-option>
+              <ion-option value="bmw">BMW</ion-option>
+              <ion-option value="chevrolet" selected="true">Chevrolet</ion-option>
+              <ion-option value="dodge">Dodge</ion-option>
+              <ion-option value="fiat">FIAT</ion-option>
+              <ion-option value="ford">Ford</ion-option>
+              <ion-option value="honda">Honda</ion-option>
+              <ion-option value="toyota">Toyota</ion-option>
+              <ion-option value="volvo">Volvo</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-card>
+
+        <button ion-button icon-start block no-margin color="primary" class="round" tappable (click)="doSearch()">
+          <ion-icon name="search"></ion-icon> Search
+        </button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <!-- search button -->
+
+</ion-footer>

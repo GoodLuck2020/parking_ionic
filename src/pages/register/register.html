@@ -1,0 +1,71 @@
+<!-- -->
+<ion-content class="auth-page">
+  <div class="login-content">
+
+    <!-- Logo -->
+    <div padding-horizontal text-center>
+      <div class="logo"></div>
+      <h2 ion-text class="text-white" no-margin>
+        Easy<strong>Parking</strong>
+      </h2>
+    </div>
+
+    <!-- Register form -->
+    <form [formGroup]="onRegisterForm" class="list-form">
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="person" item-start class="text-white"></ion-icon>
+          Full Name
+        </ion-label>
+        <ion-input type="text" formControlName="fullName"></ion-input>
+      </ion-item>
+      <p ion-text color="danger" class="text-1x has-error" *ngIf="onRegisterForm.get('fullName').touched && onRegisterForm.get('fullName').hasError('required')">This field is required</p>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="mail" item-start class="text-white"></ion-icon>
+          Email
+        </ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <p ion-text color="danger" class="text-1x has-error" *ngIf="onRegisterForm.get('email').touched && onRegisterForm.get('email').hasError('required')">This field is required</p>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-white"></ion-icon>
+          Password
+        </ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <p ion-text color="danger" class="text-1x has-error" *ngIf="onRegisterForm.get('password').touched && onRegisterForm.get('password').hasError('required')">This field is required</p>
+    </form>
+
+    <div margin-top>
+      <button ion-button block color="dark" tappable (click)="register()" [disabled]="!onRegisterForm.valid">
+        SIGN UP
+      </button>
+
+      <p text-center ion-text color="light">Or Sign Up with:</p>
+
+      <ion-grid class="btn-group">
+        <ion-row>
+          <button ion-button icon-only block class="btn-facebook col col-4">
+            <ion-icon name="logo-facebook"></ion-icon>
+          </button>
+          <button ion-button icon-only block class="btn-twitter col col-4">
+            <ion-icon name="logo-twitter"></ion-icon>
+          </button>
+          <button ion-button icon-only block class="btn-gplus col col-4">
+            <ion-icon name="logo-googleplus"></ion-icon>
+          </button>
+        </ion-row>
+      </ion-grid>  
+    </div>
+
+    <!-- Other links -->
+    <div text-center margin-top>
+      <span ion-text color="light" tappable (click)="login()">I have an account</span>
+    </div>
+
+  </div>
+</ion-content>

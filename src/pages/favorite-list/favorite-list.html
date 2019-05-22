@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Favorites</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="common-bg">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col col-12 margin-bottom>
+        <ion-card *ngIf="!favorites.length" class="primary-bg" margin-top>
+          <ion-card-content>
+          	<p text-center class="text-white">You have no favorite lots.</p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-list>
+            <ion-item-sliding *ngFor="let favorite of favorites">
+                <button ion-item (click)="itemTapped(favorite.lot)">
+                    <ion-thumbnail item-left>
+                        <img src="{{favorite.lot.thumb}}"/>
+                    </ion-thumbnail>
+                    <h2>{{favorite.lot.name}}</h2>
+                    <p>{{favorite.lot.address}} ∙ {{favorite.lot.price  | currency }}</p>
+                </button>
+                <ion-item-options>
+                    <button ion-button color="danger" (click)="deleteItem(favorite)">Delete</button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

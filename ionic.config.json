@@ -1,0 +1,8 @@
+{
+  "name": "ionBooking",
+  "app_id": "4a78b7b0",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

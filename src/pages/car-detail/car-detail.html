@@ -1,0 +1,73 @@
+<!-- -->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Car Detail</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="common-bg">
+  <img class="full-width to-top" src="{{ shop.thumb }}" alt="">
+  <!-- shop name and infomation-->
+  <div class="border-bottom detail-bg" padding>
+    <h4 class="pull-left" no-margin ion-text color="primary">{{ shop.name }}</h4>
+    <div class="pull-right">
+      <span ion-text text-center>average price</span>
+      <h5 class="bold" no-margin ion-text text-center color="primary">
+        {{ shop.price | currency }}
+      </h5>
+    </div>
+    <div class="clear"></div>
+    <div>
+      <span>{{ shop.slogan }}</span>
+      <br/>
+      <span ion-text color="secondary">{{ shop.address }}</span>
+    </div>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <!-- car info -->
+      <ion-col col-12 col-md-6 col-lg-6 col-xl-4 *ngFor="let car of shop.cars">
+        <div class="car car-info card round" margin>
+          <div class="car-image border-bottom" [ngStyle]="{'background-image': 'url(' + car.thumb + ')'}"></div>
+          <div class="border-bottom" padding>
+            <div class="pull-left">
+              <h5 no-margin ion-text color="primary">{{ car.name }}</h5>
+      <!--         <span>{{ shop.slogan }}</span> -->
+            </div>
+            <div class="pull-right" text-right>
+              <h6 no-margin color="car-ion-text color">Daily {{ car.price | currency }}</h6>
+              <span ion-text color="dark">Total <strong>{{ car.price * numDays | currency }}</strong></span>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div padding>
+            <div class="pull-left">
+              <div>
+                <ion-icon name="person" color="dark"></ion-icon>
+                <span ion-text color="dark" margin-right>{{ car.passengers }} Passengers</span>
+              </div>
+              <div>
+                <ion-icon name="md-briefcase" color="dark"></ion-icon>
+                <span ion-text color="dark">{{ shop.luggage }} Bags</span>
+              </div>
+              <div>
+                <ion-icon name="md-checkmark" color="dark"></ion-icon>
+                <span ion-text color="dark" *ngIf="car.automatic_transmission">Automatic transmission</span>
+                <span ion-text color="dark" *ngIf="!car.automatic_transmission">Manual transmission</span>
+              </div>
+            </div>
+            <div class="pull-right">
+              <button ion-button color="secondary" tappable (click)="checkout(shop)">Reserve</button>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

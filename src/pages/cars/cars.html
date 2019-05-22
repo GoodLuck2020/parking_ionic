@@ -1,0 +1,44 @@
+<!--  -->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Cars</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="common-bg cars">
+  <!--  -->
+  <ion-toolbar padding color="secondary">
+    <p ion-text no-margin class="text-white">
+      <strong>4</strong> results found!
+    </p>
+  </ion-toolbar>
+
+  <ion-grid>
+    <ion-row>
+      <!--list of car shops-->
+      <ion-col col-12 col-md-6 col-lg-6 col-xl-4 *ngFor="let shop of shops" tappable (click)="viewDetail(shop.id)">
+        <div class="car card border-bottom" margin-bottom>
+          <div class="background" [ngStyle]="{'background-image': 'url(' + shop.thumb + ')'}">
+            <div class="background-filter rlt">
+              <div class="align-bottom" padding-left padding-right>
+                <h6 class="pull-left" ion-text class="text-white">{{ shop.name }}</h6>
+                <h6 class="pull-right" ion-text class="text-white">Daily {{ shop.price | currency }}</h6>
+                <div class="clear"></div>
+              </div>
+            </div>
+          </div>
+          <div padding class="detail-bg">
+            <ion-icon name="person" color="primary"></ion-icon>
+            <span ion-text margin-right>{{ shop.passengers_from }}-{{ shop.passengers_to }}</span>
+            <ion-icon name="md-briefcase" color="primary"></ion-icon>
+            <span ion-text>{{ shop.luggage }}</span>
+            <span class="pull-right" ion-text color="primary">Total <strong>{{ shop.price * numDays | currency }}</strong></span>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

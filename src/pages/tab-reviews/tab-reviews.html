@@ -1,0 +1,40 @@
+<!-- -->
+<ion-header>
+
+  <ion-navbar class="no-border" color="primary">
+    <button ion-button tappable (click)="dismiss()">
+      <ion-icon name="md-close"></ion-icon>
+    </button>
+
+    <ion-title>{{ lot.name }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div class="rating" padding>
+    <!--rating-->
+    <ion-badge class="square" color="dark">{{ lot.rating }}</ion-badge>
+    <span ion-text color="dark">of 5 - guest rating</span>
+  </div>
+
+  <!--list of reviews-->
+  <ion-list class="list-full-border">
+    <ion-item *ngFor="let review of reviews" text-wrap>
+      <div class="title">
+        <div class="pull-left bold">{{ review.title }}</div>
+        <div class="pull-right">{{ review.date }}</div>
+        <div class="clear"></div>
+        <div class="text-sm">
+          <ion-icon name="md-star" dark *ngFor="let start of range(review.rating)"></ion-icon>
+        </div>
+      </div>
+      <div>
+        {{ review.content }}
+      </div>
+      <div class="author">{{ review.username }} from {{ review.from }}</div>
+    </ion-item>
+  </ion-list>
+</ion-content>

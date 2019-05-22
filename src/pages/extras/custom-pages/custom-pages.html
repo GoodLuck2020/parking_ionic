@@ -1,0 +1,20 @@
+<ion-header class="animated fadeInDown">
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Extra Pages</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list class="animated fadeInLeft">
+    <button ion-item *ngFor="let page of cpagesItems" (click)="openPage(page.component)">
+      <ion-icon item-left class="text-primary" [name]="page.icon"></ion-icon>
+      <span ion-text color="primary">{{ page.title }}</span>
+    </button>
+  </ion-list>
+</ion-content>

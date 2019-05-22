@@ -1,0 +1,221 @@
+<!-- -->
+<ion-header class="animated fadeIn no-shadow">
+
+  <ion-navbar class="no-border" color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <div ion-text class="icon-title text-white"></div>
+      Easy<strong>Parking</strong>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button tappable (click)="presentNotifications($event)">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+      <button ion-button tappable (click)="goToAccount()">
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="animated fadeIn common-bg">
+  <!--list menu on the top-->
+  <div class="booking-card marginB-16px">
+    <ion-grid class="card" fixed>
+      <ion-row>
+        <ion-col class="no-padding">
+          <ion-searchbar [(ngModel)]="lotlocation" (ionInput)="getItems($event)" (ionCancel)="showItems = !showItems" autocomplete="on" autocorrect="on" spellcheck="true" animated="true" placeholder="Destination or address..."></ion-searchbar>
+          <ion-list class="searchbar-results animated fadeIn" *ngIf="showItems">
+            <button ion-item *ngFor="let item of items" tappable (click)="itemSelected(item)">
+              <ion-icon name="pin"></ion-icon>
+              {{ item }}
+            </button>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <!--<ion-row>
+        <ion-col col-6 class="bb no-paddingB">
+          <ion-label class="no-margin mb-half bold text-primary">{{ checkin.name }}</ion-label>
+        </ion-col>
+        <ion-col col-6 class="bb no-paddingB">
+           <ion-label class="no-margin mb-half bold text-primary">{{ checkout.name }}</ion-label>
+        </ion-col>
+        <ion-col col-6 class="br bb datetime-btn">
+          <ion-icon name="md-calendar" item-left></ion-icon>
+          <ion-datetime class="text-primary" displayFormat="DDD, MMM, DD" pickerFormat="DD/MM/YYYY" [(ngModel)]="checkin.date"></ion-datetime>
+        </ion-col>
+        <ion-col col-6 class="bb datetime-btn">
+          <ion-icon name="md-calendar" item-left></ion-icon>
+          <ion-datetime class="text-primary" displayFormat="DDD, MMM, DD" pickerFormat="DD/MM/YYYY" [(ngModel)]="checkout.date"></ion-datetime>
+        </ion-col>
+      </ion-row>-->
+      <!--<ion-row>
+        <ion-col col-6 col-md-4 class="no-paddingT no-paddingB">
+          <div class="guests bb">
+            <ion-item>
+              <ion-label>Parking Spots</ion-label>
+              <ion-select [(ngModel)]="spots" cancelText="Cancel" okText="OK">
+                <ion-option value="1" selected="true">1</ion-option>
+                <ion-option value="2">2</ion-option>
+                <ion-option value="3">3</ion-option>
+                <ion-option value="4">4</ion-option>
+                <ion-option value="5">5</ion-option>
+                <ion-option value="6">6</ion-option>
+                <ion-option value="7">7</ion-option>
+                <ion-option value="8">8</ion-option>
+                <ion-option value="9">9</ion-option>
+                <ion-option value="10">10</ion-option>
+              </ion-select>
+            </ion-item>
+          </div>
+        </ion-col>
+        <ion-col col-6 col-md-4 class="no-paddingT no-paddingB">
+          <div class="guests bb">
+            <ion-item>
+              <ion-label>Size</ion-label>
+              <ion-select [(ngModel)]="adults" cancelText="Cancel" okText="OK">
+                <ion-option value="1" selected="true">Car</ion-option>
+                <ion-option value="2">Truck</ion-option>
+                <ion-option value="3">Suv</ion-option>
+                <ion-option value="4">Trailer</ion-option>
+                <ion-option value="5">Motorcycle</ion-option>
+              </ion-select>
+            </ion-item>
+          </div>
+        </ion-col>
+        <ion-col col-6 col-md-4 class="no-paddingT no-paddingB">
+          <div class="guests bb">
+            <ion-item>
+              <ion-label>Passengers</ion-label>
+              <ion-select [(ngModel)]="children" cancelText="Cancel" okText="OK" (ngModelChange)="childrenArr($event)">
+                <ion-option value="0" selected="true">0</ion-option>
+                <ion-option value="1">1</ion-option>
+                <ion-option value="2">2</ion-option>
+                <ion-option value="3">3</ion-option>
+                <ion-option value="4">4</ion-option>
+                <ion-option value="5">5</ion-option>
+                <ion-option value="6">6</ion-option>
+                <ion-option value="7">7</ion-option>
+                <ion-option value="8">8</ion-option>
+                <ion-option value="9">9</ion-option>
+                <ion-option value="10">10</ion-option>
+              </ion-select>
+            </ion-item>
+          </div>
+        </ion-col>
+        <ion-col col-6 class="no-paddingT no-paddingB">
+
+        </ion-col>
+      </ion-row>-->
+
+
+      <ion-row>
+        <ion-col>
+          <button ion-button block color="primary" class="round" tappable (click)="viewLots()">
+            <ion-icon name="search"></ion-icon>
+            Search
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!--<ion-grid fixed>
+    <ion-row>
+      <ion-col col-md-8 col-lg-6 offset-md-2 offset-lg-3>
+
+        <ion-card class="home-card no-marginT marginB-32px" no-padding>
+
+          <ion-list>
+            <button ion-item color="secondary" tappable (click)="searchCar()">
+              <ion-icon name="car" item-start></ion-icon>
+                Rent a Car
+            </button>
+            <button ion-item color="secondary" tappable (click)="searchTrip()">
+              <ion-icon name="beer" item-start></ion-icon>
+                Trip Activities
+            </button>
+          </ion-list>
+
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>-->
+
+  <hr class="secondary-bg quarter-op" no-margin>
+
+  <ion-item-group class="home-widget">
+    <ion-item-divider color="primary">
+      <h2 ion-text class="bold text-white">
+        <ion-icon name="home"></ion-icon>
+        Parking Near You
+        <ion-badge class="pull-right green-bg text-white" tappable (click)="viewLots()">SEE MORE</ion-badge>
+      </h2>
+    </ion-item-divider>
+    <ion-item>
+      <div id="home-map" class="google-map"></div>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-item-group class="home-widget">
+    <ion-item-divider color="primary">
+      <h2 ion-text class="bold text-white">
+        <ion-icon name="pricetags"></ion-icon>
+        Promotions Today
+      </h2>
+    </ion-item-divider>
+    <ion-item>
+
+      <ion-grid class="list-lots primary-bg" no-padding>
+        <ion-row no-padding>
+          <ion-col col-6 col-lg-3 *ngFor="let lot of lots; let i = index" col-6 col-md-3 tappable (click)="viewLot(lot)">
+            <div class="lot-bg" [ngStyle]="{'background-image': 'url(' + lot.thumb + ')'}" *ngIf="i < 4">
+              <div class="bg-filter">
+                <div class="discount" *ngIf="lot.sale_price">{{ (100 * (1 - lot.price / lot.sale_price)).toFixed(0)
+                  }}%
+                </div>
+                <div class="bottom-info">
+
+                  <div>
+                    <div class="pull-left">
+                      <h5 ion-text class="text-white">{{ lot.name }}</h5>
+                    </div>
+                    <div class="pull-right">
+                      <span class="origin-price hide-sm"
+                            *ngIf="lot.sale_price">{{ lot.price | currency:'USD':'code' }}</span>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+
+                  <div>
+                    <div class="pull-left">
+                      <ion-badge class="square" color="secondary">{{ lot.rating }}</ion-badge>
+                      <span class="rating-label text-white" ion-text> of 5 - guest rating</span>
+                    </div>
+                    <div class="pull-right">
+                      <span class="origin-price hide-lg"
+                            *ngIf="lot.sale_price">{{ lot.price | currency }}</span>
+                      <span class="price text-white" *ngIf="!lot.sale_price"
+                            ion-text>{{ lot.price | currency }}</span>
+                      <span class="sale-price" *ngIf="lot.sale_price"
+                            ion-text class="text-white">{{ lot.sale_price | currency }}</span>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-item>
+  </ion-item-group>
+
+
+</ion-content>

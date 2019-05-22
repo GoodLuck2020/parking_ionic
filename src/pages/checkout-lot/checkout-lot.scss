@@ -1,0 +1,16 @@
+page-checkout-lot,
+.checkout-lot {
+  .bg-filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .item.no-border .item-inner {
+    padding-right: 0;
+    [item-end] {
+      margin: 0;
+    }
+  }
+
+}

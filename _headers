@@ -1,0 +1,10 @@
+/assets/*
+	Cache-Control: public, max-age=2592000
+/build/*
+	Cache-Control: public, max-age=2592000
+/index.html
+	Cache-Control: public, max-age=2592000
+/manifest.json
+	Cache-Control: public, max-age=2592000
+/service-worker.js
+	Cache-Control: public, max-age=2592000

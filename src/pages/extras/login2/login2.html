@@ -1,0 +1,66 @@
+<ion-header class="animated fadeInDown">
+
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Login 2</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<!-- -->
+<ion-content padding class="animated fadeIn login auth-page">
+  <div class="login-content">
+
+    <!-- Logo -->
+    <div padding-horizontal margin-bottom text-center class="animated fadeInDown">
+      <div class="logo">
+      </div>
+      <h4 ion-text class="text-white" no-margin>
+        Easy<strong>Parking</strong>
+      </h4>
+    </div>
+
+    <!-- Login form -->
+    <form [formGroup]="onLoginForm" class="list-form">
+
+      <ion-item class="animated fadeInLeft">
+        <ion-label class="fw500 text-white" stacked>Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <p ion-text class="text-1x has-error" *ngIf="onLoginForm.get('email').touched && onLoginForm.get('email').hasError('required')">This field is required</p>
+
+      <ion-item class="animated fadeInLeft">
+        <ion-label class="fw500 text-white" stacked>Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <p ion-text color="danger" class="text-1x has-error" *ngIf="onLoginForm.get('password').touched && onLoginForm.get('password').hasError('required')">This field is required</p>
+
+    </form>
+
+    <p text-right ion-text color="light" tappable (click)="forgotPass()"><strong>Forgot Password?</strong></p>
+
+    <button ion-button large icon-start block color="dark" tappable [disabled]="!onLoginForm.valid">
+      <ion-icon name="log-in"></ion-icon>
+      SIGN IN
+    </button>
+
+    <p text-center ion-text color="light">Or Sign in with:</p>
+
+    <button ion-button icon-only block class="btn-facebook">
+      <ion-icon name="logo-facebook"></ion-icon>
+      Facebook
+    </button>
+    <button ion-button icon-only block class="btn-twitter">
+      <ion-icon name="logo-twitter"></ion-icon>
+      Twitter
+    </button>
+
+
+    <!-- Other links -->
+    <div text-center margin-top>
+      <span ion-text color="light" tappable>New here? <strong>Sign up</strong></span>
+    </div>
+
+  </div>
+</ion-content>

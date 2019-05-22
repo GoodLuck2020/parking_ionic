@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Bookings</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="common-bg">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col col-12 margin-bottom>
+        <ion-card *ngIf="!bookings.length" class="primary-bg" margin-top>
+          <ion-card-content>
+          	<p text-center class="text-white">You have no bookings yet.</p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-list>
+            <ion-item-sliding *ngFor="let booking of bookings">
+                <button ion-item (click)="itemTapped(booking.lot)">
+                    <ion-thumbnail item-left>
+                        <img src="{{booking.lot.thumb}}"/>
+                    </ion-thumbnail>
+                    <h2>{{booking.lot.name}}</h2>
+                    <p>{{booking.lot.address}} ∙ {{booking.lot.price  | currency }}</p>
+                    <ion-badge class="green-bg">Booked</ion-badge>
+                </button>
+            </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
