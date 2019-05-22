@@ -11,5 +11,4 @@ app.use('/*', function(req, res){
 app.set('port', process.env.PORT || 3000);
 app.listen(app.get('port'), function() {
   console.log("listening to http://localhost:" + app.get("port"));
-  console.log("HHHOOO");
 });
